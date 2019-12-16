@@ -1,6 +1,8 @@
-using Order.Properties;
+using System;
+using BLL.Order;
+using BLL.Party;
 
-namespace Order
+namespace BLL
 {
     /// <summary>
     /// Represents an event sent to an OPEN Order that captures an amendment to the Order
@@ -16,12 +18,12 @@ namespace Order
 
         public OrderLine GetNewOrderLine()
         {
-            
+            throw new NotImplementedException();
         }
 
         public OrderLine GetOriginalOrderLine()
         {
-            
+            throw new NotImplementedException();
         }
     }
 
@@ -32,12 +34,12 @@ namespace Order
 
         public void GetNewPartySummary()
         {
-            
+            throw new NotImplementedException();
         }
 
         public void GetOriginalPartySummary()
         {
-            
+            throw new NotImplementedException();
         }
     }
 

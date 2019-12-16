@@ -1,4 +1,5 @@
 ﻿using System;
+using BLL.Order;
 
 namespace ConsoleApp
 {
@@ -7,7 +8,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var order = new Order.Order();
+            var order = new Order();
         }
     }
 }

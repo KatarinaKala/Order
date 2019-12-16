@@ -1,4 +1,4 @@
-namespace Order
+namespace BLL
 {
     public abstract class UniqueIdentifier
     {

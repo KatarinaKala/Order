@@ -1,4 +1,6 @@
-namespace Order
+using BLL.Order;
+
+namespace BLL
 {
 //OrderStatus is determined by the Order, according to what LifecycleEvents the Order has received
     public class LifecycleEvent : OrderEvent

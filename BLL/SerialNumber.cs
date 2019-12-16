@@ -1,4 +1,4 @@
-namespace Order
+namespace BLL
 {
     public class SerialNumber
     {

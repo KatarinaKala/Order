@@ -1,4 +1,6 @@
-namespace Order
+using BLL.Order;
+
+namespace BLL
 {
     //Represents an event that, when applied to an OPEN Order, 
     //records a Payment requested, made, or accepted against the Order

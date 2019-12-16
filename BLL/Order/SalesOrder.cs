@@ -1,6 +1,6 @@
 using System;
 
-namespace Order
+namespace BLL.Order
 {
     public class SalesOrder : Order
     {

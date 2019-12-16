@@ -1,4 +1,6 @@
-namespace Order
+using System;
+
+namespace BLL.Discount
 {
     public class Discount
     {
@@ -6,7 +8,7 @@ namespace Order
 
         public virtual Price CalculateDiscountedPrice(Price price)
         {
-            
+            throw new NotImplementedException();
         }
     }
 
@@ -14,7 +16,7 @@ namespace Order
     {
         public override Price CalculateDiscountedPrice(Price price)
         {
-            
+            throw new NotImplementedException();
         }
     }
     
@@ -22,7 +24,7 @@ namespace Order
     {
         public override Price CalculateDiscountedPrice(Price price)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

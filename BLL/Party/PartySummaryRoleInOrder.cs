@@ -1,4 +1,4 @@
-namespace Order.Properties
+namespace BLL.Party
 {
     public class PartySummaryRoleInOrder
     {

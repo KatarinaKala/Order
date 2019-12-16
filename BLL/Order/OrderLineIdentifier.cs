@@ -1,4 +1,4 @@
-namespace Order
+namespace BLL.Order
 {
     public class OrderLineIdentifier : UniqueIdentifier
     {

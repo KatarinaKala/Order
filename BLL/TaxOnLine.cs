@@ -1,4 +1,6 @@
-namespace Order
+using System;
+
+namespace BLL
 {
     public class TaxOnLine
     {
@@ -8,7 +10,7 @@ namespace Order
 
         public Money CalculateTax(Money amount)
         {
-            
+            throw new NotImplementedException();
         }
     }
 }

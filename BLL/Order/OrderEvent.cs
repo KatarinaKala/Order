@@ -1,6 +1,7 @@
 using System;
+using BLL.Party;
 
-namespace Order
+namespace BLL.Order
 {
     public class OrderEvent
     {
