@@ -64,7 +64,8 @@ namespace Order
 
         public void AddPartySummary(PartySummary reference, PartySummaryRoleInOrder role)
         {
-            //Add a PartySummary playing the specified PartySummaryRoleInOrder section
+            //Add a PartySummary playing the specified PartySummaryRoleInOrder sectio
+            
         }
         
         public PartySummary GetPartySummary(PartySummaryRoleInOrder role)
