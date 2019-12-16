@@ -1,12 +1,9 @@
 namespace Order
 {
-    public class OrderLineIdentifier
+    public class OrderLineIdentifier : UniqueIdentifier
     {
-        public string Identifier { get; set; }
-
-        public string GetIdentifier()
+        public OrderLineIdentifier(string identifier) : base(identifier)
         {
-            return Identifier;
         }
     }
 }

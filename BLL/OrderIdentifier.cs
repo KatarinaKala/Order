@@ -1,14 +1,9 @@
 namespace Order
 {
-    //Section 9.3    
-    public class OrderIdentifier
+    public class OrderIdentifier : UniqueIdentifier
     {
-        public string Identifier { get; set; }
-
-        public string GetIdentifier()
+        public OrderIdentifier(string identifier) : base(identifier)
         {
-            //Return unique identifier for the Order
-            return Identifier;
         }
     }
 }

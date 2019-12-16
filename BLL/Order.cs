@@ -6,35 +6,37 @@ namespace Order
 {
     public class Order
     {
-        //Section 9.3
         public DateTime DateCreated { get; set; }
         public string SalesChannel { get; set; }
         public string TermsAndConditions { get; set; }
-        public RuleContext DiscountContext { get; set; } //Eraldi mustrist Rule pärit
+        public RuleContext DiscountContext { get; set; } 
 
+        public string Id { get; set; } = new Random().Next(10000, 100000).ToString();
         public List<OrderLine> OrderLines { get; set; }
+        public List<ChargeLine> ChargeLines { get; set; }
+
         //Manager responsibilities of Order
         public OrderIdentifier GetIdentifier()
         {
             //Return OrderIdentifier
-            return new OrderIdentifier();
+            return new OrderIdentifier(Id);
         }
         
         public void AddOrderLine(OrderLine orderLine)
         {
+            //Adds an OrderLine to the Order
             OrderLines.Add(orderLine);
         }
 
         public List<OrderLine> GetOrderLines()
         {
-            //?Return the collection of OrderLines that constitute the Order
+            //Return the collection of OrderLines that constitute the Order
             return OrderLines;
         }
 
         public void RemoveOrderLine(OrderLineIdentifier id)
         {
-            OrderLines.RemoveAll(orderLine => orderLine.GetOrderLineIdentifier() == id);
-            //?Remove the specified OrderLine from the Order
+            //Remove the specified OrderLine from the Order
             foreach (var orderLine in OrderLines)
             {
                 if (orderLine.GetOrderLineIdentifier() == id)
@@ -47,12 +49,12 @@ namespace Order
 
         public void AddChargeLine(ChargeLine line)
         {
-            //Add a ChargerLine to the Order section 9.8
+            ChargeLines.Add(line); 
         }
 
         public List<ChargeLine> GetChargerLines()
         {
-            //Return the collection of ChargerLines for the Order
+            return ChargeLines;
         }
 
         public void RemoveChargeLine(OrderLineIdentifier id)
@@ -62,7 +64,7 @@ namespace Order
 
         public void AddPartySummary(PartySummary reference, PartySummaryRoleInOrder role)
         {
-            //Add a PartySummary playing the specified PartySummaryRoleInOrder section 9.6
+            //Add a PartySummary playing the specified PartySummaryRoleInOrder section
         }
         
         public PartySummary GetPartySummary(PartySummaryRoleInOrder role)

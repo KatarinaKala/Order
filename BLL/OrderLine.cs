@@ -13,7 +13,8 @@ namespace Order
         public int NumberOrdered { get; set; }
         public Money UnitPrice { get; set; }
         public DateTime ExpectedDeliveryDate { get; set; }
-        public OrderLineIdentifier OrderLineIdentifier { get; set; }
+        
+        //public OrderLineIdentifier OrderLineIdentifier { get; set; } miks see peab olema?
 
         //Manage identification
         public OrderLineIdentifier GetOrderLineIdentifier()
