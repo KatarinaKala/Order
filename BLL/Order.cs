@@ -14,6 +14,7 @@ namespace Order
         public string Id { get; set; } = new Random().Next(10000, 100000).ToString();
         public List<OrderLine> OrderLines { get; set; }
         public List<ChargeLine> ChargeLines { get; set; }
+        public Dictionary<PartySummaryRoleInOrder, PartySummary> partySummaries = new Dictionary<PartySummaryRoleInOrder, PartySummary>();
 
         //Manager responsibilities of Order
         public OrderIdentifier GetIdentifier()
@@ -39,7 +40,7 @@ namespace Order
             //Remove the specified OrderLine from the Order
             foreach (var orderLine in OrderLines)
             {
-                if (orderLine.GetOrderLineIdentifier() == id)
+                if (orderLine.GetOrderLineIdentifier() == id) //kas siin ei või kasutada orderLine.OrderLineIdentifier
                 {
                     OrderLines.Remove(orderLine);
                     return;
@@ -60,33 +61,45 @@ namespace Order
         public void RemoveChargeLine(OrderLineIdentifier id)
         {
             //Remove the specified ChargeLine from the Order
+            foreach (var chargeLine in ChargeLines)
+            {
+                if (chargeLine.OrderLineIdentifier == id)
+                {
+                    ChargeLines.Remove(chargeLine);
+                }
+            }
         }
 
         public void AddPartySummary(PartySummary reference, PartySummaryRoleInOrder role)
         {
-            //Add a PartySummary playing the specified PartySummaryRoleInOrder sectio
+            //Add a PartySummary playing the specified PartySummaryRoleInOrder
+            partySummaries.Add(role, reference);
             
         }
         
         public PartySummary GetPartySummary(PartySummaryRoleInOrder role)
         {
             //Get the PartySummary playing the specified PartySummaryRoleInOrder
+            return partySummaries[role];
         }
         
         public void RemovePartySummary(PartySummaryRoleInOrder role)
         {
             //Remove the PartySummary playing the specified PartySummaryRoleInOrder
+            partySummaries.Remove(role);
         }
 
         //Event responsibilities of Order
         public bool AcceptEvent(OrderEvent orderEvent)
         {
             //Accept an OrderEvent section 9.11
+            return orderEvent.Processed;
         }
 
         public List<OrderEvent> GetEvents()
         {
             //Return all the OrderEvents that have been applied to this Order 
+            //Kuhu kõik OrderEventid lisan? Teen siin meetodi, et listi lisada?
         }
 
         public void ProcessDiscountEvent()
@@ -106,7 +119,7 @@ namespace Order
 
         public void ProcessInvoiceEvent()
         {
-            //Is overriden by the Order subclasses PurchaseOrder and SalesOrder section 9.4
+            //Is overriden by the Order subclasses PurchaseOrder and SalesOrder
         }
 
         public OrderStatus GetStatus()

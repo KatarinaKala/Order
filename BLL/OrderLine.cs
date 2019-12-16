@@ -14,12 +14,12 @@ namespace Order
         public Money UnitPrice { get; set; }
         public DateTime ExpectedDeliveryDate { get; set; }
         
-        //public OrderLineIdentifier OrderLineIdentifier { get; set; } miks see peab olema?
+        public OrderLineIdentifier OrderLineIdentifier { get; set; }
 
         //Manage identification
         public OrderLineIdentifier GetOrderLineIdentifier()
         {
-            //Return OrderLineIdentifier
+            return OrderLineIdentifier;
         }
 
         //Manage number ordered

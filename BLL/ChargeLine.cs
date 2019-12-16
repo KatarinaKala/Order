@@ -8,6 +8,8 @@ namespace Order
         public string Description { get; set; }
         public string Comment { get; set; }
 
+        public OrderLineIdentifier OrderLineIdentifier { get; set; }
+
         public void AddTax(TaxOnLine tax)
         {
             

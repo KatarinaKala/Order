@@ -1,7 +1,10 @@
 namespace Order
 {
-    public class OrderStatus
+    public enum OrderStatus
     {
-        //Section 9.12
+        Initializing = 0,
+        Open = 1,
+        Closed = 2,
+        Cancelled = 3,
     }
 }
