@@ -1,7 +1,10 @@
 namespace BLL.Party
 {
-    public class PartySummaryRoleInOrder
+    public enum PartySummaryRoleInOrder
     {
-        //Kas Vendor, SalesAgent, PaymentReceiver, Purchaser jne
+        Vendor, 
+        SalesAgent, 
+        PaymentReceiver, 
+        Purchaser
     }
 }
