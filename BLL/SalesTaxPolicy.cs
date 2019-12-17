@@ -2,7 +2,7 @@ namespace BLL
 {
     public class SalesTaxPolicy
     {
-        private string _taxationType;
+        public string _taxationType;
         private double _taxationRate;
         
         public SalesTaxPolicy(string taxationType, double taxationRate)

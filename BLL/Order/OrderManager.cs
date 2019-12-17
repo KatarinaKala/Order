@@ -38,12 +38,12 @@ namespace BLL.Order
             _discounts.Add(discount);
         }
 
-        public List<Discount> GetDiscountTypes()
+        public List<Discount> GetDiscounts()
         {
             return _discounts;
         }
 
-        public void RemoveDiscountType(Discount discount)
+        public void RemoveDiscount(Discount discount)
         {
             _discounts.Remove(discount);
         }
@@ -60,12 +60,23 @@ namespace BLL.Order
 
         public SalesTaxPolicy GetSalesTaxPolicy(string taxationType)
         {
+            //return _orders.Single(order => order.GetIdentifier() == identifier);
+            
             throw new NotImplementedException();
+            /*foreach (var policy in _salesTaxPolicies)
+            {
+                if (policy._taxationType == taxationType)
+                {
+                    return policy;
+                }
+            }*/
+
+            //return _salesTaxPolicies.Where(policy => policy._taxationType == taxationType);
         }
 
-        public void RemoveSalesTaxPolicy(string taxationType)
+        public void RemoveSalesTaxPolicy(SalesTaxPolicy policy)
         {
-            throw new NotImplementedException();
+            _salesTaxPolicies.Remove(policy);
         }
     }
 }

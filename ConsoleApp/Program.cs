@@ -11,6 +11,7 @@ namespace ConsoleApp
             var orderLine = new OrderLine(2, "Veepudel", 15);
             var order = new Order();
             order.AddOrderLine(orderLine);
+            order.GetEvents();
         }
     }
 }

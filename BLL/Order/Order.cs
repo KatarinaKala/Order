@@ -6,9 +6,8 @@ namespace BLL.Order
 {
     public class Order
     {
-        private string Id = new Random().Next(10000, 100000).ToString();
+        private string OrderId = new Random().Next(10000, 100000).ToString();
         public DateTime DateCreated { get; set; } //Mõtle, kas vaja. Panna konstruktorisse?
-        public string TermsAndConditions { get; set; } //Mõtle, kas vaja
 
         public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries =
             new Dictionary<PartySummaryRoleInOrder, PartySummary>();
@@ -16,13 +15,13 @@ namespace BLL.Order
         private List<ChargeLine>? ChargeLines;
         private List<OrderEvent> OrderEvents;
         public OrderStatus OrderStatus;
-
+        public DeliveryReceiver? DeliveryReceiver { get; set; }
 
         //Manager responsibilities of Order
         public OrderIdentifier GetIdentifier()
         {
             //Return OrderIdentifier
-            return new OrderIdentifier(Id);
+            return new OrderIdentifier(OrderId);
         }
 
         public void AddOrderLine(OrderLine orderLine)
@@ -42,7 +41,7 @@ namespace BLL.Order
             //Remove the specified OrderLine from the Order
             foreach (var orderLine in OrderLines)
             {
-                if (orderLine.GetOrderLineIdentifier() == id) //kas siin ei või kasutada orderLine.OrderLineIdentifier
+                if (orderLine.GetOrderLineIdentifier() == id)
                 {
                     OrderLines.Remove(orderLine);
                     return;
