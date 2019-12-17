@@ -86,34 +86,32 @@ namespace BLL.Order
         public void RemoveTax(TaxOnLine tax)
         {
             //Remove a TaxOnLine from the OrderLine
-            throw new NotImplementedException();
+            TaxOnLines.Remove(tax);
         }
 
         //Manage ChargeLines
         public void AddChargeLine(ChargeLine line)
         {
             //Add a ChargeLine to the OrderLine
-            throw new NotImplementedException();
+            ChargeLines.Add(line);
         }
 
         public List<ChargeLine> GetChargeLines()
         {
             //Return all the ChargeLines associated with this OrderLine
-            throw new NotImplementedException();
+            return ChargeLines;
         }
 
         public void RemoveChargeLine(OrderLineIdentifier id)
         {
             //Remove a ChargeLine from the OrderLine
-            throw new NotImplementedException();
-        }
-
-        //Clone itself for amendment purposes
-        public OrderLine Clone()
-        {
-            //Makes a copy of the OrderLine and any associated objects that can be used to create amended OrderLine
-            
-            throw new NotImplementedException();
+            foreach (var chargeLine in ChargeLines)
+            {
+                if (chargeLine.OrderLineIdentifier == id)
+                {
+                    ChargeLines.Remove(chargeLine);
+                }
+            }
         }
     }
 }
