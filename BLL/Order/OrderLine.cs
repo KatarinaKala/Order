@@ -12,7 +12,7 @@ namespace BLL.Order
         public string? Description { get; set; }
         public string? Comment { get; set; }
         private double _unitPrice;
-
+        
         private OrderLineIdentifier OrderLineIdentifier;
         private List<TaxOnLine>? TaxOnLines = new List<TaxOnLine>();
         public List<ChargeLine>? ChargeLines = new List<ChargeLine>();

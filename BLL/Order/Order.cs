@@ -6,7 +6,7 @@ namespace BLL.Order
 {
     public class Order
     {
-        private string OrderId = new Random().Next(10000, 100000).ToString();
+        private string OrderId = new Guid().ToString();
         public DateTime DateCreated { get; set; }
 
         public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries = 
@@ -98,7 +98,7 @@ namespace BLL.Order
 
         public OrderEvent GetEvent()
         {
-            //Return all the OrderEvents that have been applied to this Order 
+            //Return OrderEvent 
             return _event;
         }
 

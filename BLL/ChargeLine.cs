@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using BLL.Order;
 
@@ -10,7 +11,7 @@ namespace BLL
         private string? Description { get; set; }
         private string? Comment { get; set; }
         private List<TaxOnLine> _taxOnLines = new List<TaxOnLine>();
-        public OrderLineIdentifier OrderLineIdentifier { get; set; }
+        public OrderLineIdentifier OrderLineIdentifier { get;}
 
         public ChargeLine(int amount)
         {
