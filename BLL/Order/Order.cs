@@ -103,12 +103,6 @@ namespace BLL.Order
             return OrderEvents;
         }
 
-        public void ProcessDiscountEvent()
-        {
-            //Add or remove a Discount from the Order
-            throw new NotImplementedException();
-        }
-
         public void ProcessInvoiceEvent()
         {
             //Is overriden by the Order subclasses PurchaseOrder and SalesOrder
