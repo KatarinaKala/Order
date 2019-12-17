@@ -2,17 +2,17 @@ namespace BLL.Party
 {
     public class PartySummary
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public int TelephoneNumber { get; set; }
-        public string EmailAddress { get; set; }
+        private string _name;
+        private string _address;
+        private int _telephoneNumber;
+        private string _emailAddress;
         
         public PartySummary(string name, string address, int telephoneNumber, string emailAddress)
         {
-            Name = name;
-            Address = address;
-            TelephoneNumber = telephoneNumber;
-            EmailAddress = emailAddress;
+            _name = name;
+            _address = address;
+            _telephoneNumber = telephoneNumber;
+            _emailAddress = emailAddress;
         }
     }
 }

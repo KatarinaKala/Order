@@ -6,20 +6,25 @@ namespace BLL.Order
     //Section 9.5
     public class OrderLine
     {
-
         //Peab viitama kaubale, mida tellitakse
-        public int numberOrdered;
-        public string ProductName { get; set; }
+        private int _numberOrdered;
+        private string _productName;
         public string? Description { get; set; }
         public string? Comment { get; set; }
-       
-        
-
-        public int UnitPrice { get; set; }
+        private int _unitPrice;
         public DateTime ExpectedDeliveryDate { get; set; }
 
-        public OrderLineIdentifier OrderLineIdentifier { get; set; }
-        public ChargeLine? ChargeLine { get; set; }
+        private OrderLineIdentifier OrderLineIdentifier;
+        private List<TaxOnLine>? TaxOnLines;
+        public List<ChargeLine>? ChargeLines;
+        private DeliveryReceiver? DeliveryReceiver;
+
+        public OrderLine(int numberOrdered, string productName, int unitPrice)
+        {
+            _numberOrdered = numberOrdered;
+            _productName = productName;
+            _unitPrice = unitPrice;
+        }
 
         //Manage identification
         public OrderLineIdentifier GetOrderLineIdentifier()
@@ -28,54 +33,54 @@ namespace BLL.Order
         }
 
         //Manage number ordered
+        public int GetNumberOrdered()
+        {
+            //Returns the number of ProductInstances recorded by the OrderLine 
+            return _numberOrdered;
+        }
+        
         public void IncrementNumberOrdered(int number)
         {
             //Increments (suurenda) the number of ProductInstances recorded by the OrderLine
-            throw new NotImplementedException();
-        }
-
-        public int GetNumberOrdered()
-        {
-           //Returns the number of ProductInstances recorded by the OrderLine 
-           throw new NotImplementedException();
+            _numberOrdered += 1;
         }
 
         public void DecrementNumberOrdered(int number)
         {
             //Decrements the number of ProductInstances recorded by the OrderLine
-            throw new NotImplementedException();
+            _numberOrdered -= 1;
         }
 
         //Manage Parties
         public void AddDeliveryReceiver(DeliveryReceiver receiver)
         {
             //Adds a DeliveryReceiver to the OrderLine
-            throw new NotImplementedException();
+            DeliveryReceiver = receiver;
         }
 
         public DeliveryReceiver GetDeliveryReceiver()
         {
             //Return the DeliveryReceiver for this OrderLine
-            throw new NotImplementedException();
+            return DeliveryReceiver;
         }
 
         public void RemoveDeliveryReceiver()
         {
             //Remove the DeliveryReceiver from the OrderLine
-            throw new NotImplementedException();
+            DeliveryReceiver = null;
         }
 
         //Manage tax
         public void AddTax(TaxOnLine tax)
         {
             //Adds tax to the OrderLine
-            throw new NotImplementedException();
+            TaxOnLines.Add(tax);
         }
 
         public List<TaxOnLine> GetTaxes()
         {
             //Return all the TaxOnlines for the OrderLine
-            throw new NotImplementedException();
+            return TaxOnLines;
         }
 
         public void RemoveTax(TaxOnLine tax)
