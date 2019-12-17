@@ -9,8 +9,8 @@ namespace BLL.Order
     {
         //Erinevad allahindlused, käibemaksureeglid tellimusel
         private List<Order>? _orders;
-        private List<SalesTaxPolicy> _salesTaxPolicies;
-        private List<Discount>? _discounts;
+        private List<SalesTaxPolicy> _salesTaxPolicies = new List<SalesTaxPolicy>();
+        private List<Discount>? _discounts = new List<Discount>();
 
         public void AddOrder(Order order)
         {

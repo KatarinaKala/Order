@@ -9,7 +9,7 @@ namespace BLL
         private int _amount;
         private string? Description { get; set; }
         private string? Comment { get; set; }
-        private List<TaxOnLine> _taxOnLines;
+        private List<TaxOnLine> _taxOnLines = new List<TaxOnLine>();
         public OrderLineIdentifier OrderLineIdentifier { get; set; }
 
         public ChargeLine(int amount)

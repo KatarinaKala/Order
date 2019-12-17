@@ -9,18 +9,16 @@ namespace BLL.Order
         private string OrderId = new Random().Next(10000, 100000).ToString();
         public DateTime DateCreated { get; set; }
 
-        public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries =
+        public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries = 
             new Dictionary<PartySummaryRoleInOrder, PartySummary>();
-        public List<OrderLine> OrderLines;
-        public List<ChargeLine>? ChargeLines;
+        public List<OrderLine> OrderLines = new List<OrderLine>();
+        public List<ChargeLine>? ChargeLines = new List<ChargeLine>();
         private OrderEvent _event;
         private OrderStatus _orderStatus;
-        private PartySummaryRoleInOrder _role;
 
-        public Order(PartySummaryRoleInOrder role)
+        public Order()
         {
             _event = OrderEvent.Processing;
-            _role = role;
             _orderStatus = OrderStatus.Initializing;
         }
 

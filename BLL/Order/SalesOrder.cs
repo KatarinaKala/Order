@@ -10,10 +10,7 @@ namespace BLL.Order
         //Details of an initiating PurchaseOrder
         public DateTime DatePurchaseOrderReceived { get; set; }
         public string CustomerPurchaseOrderReference { get; set; }
-        
-        public SalesOrder(PartySummaryRoleInOrder role) : base(role)
-        {
-        }
+
         
         //Track ProductInstances
         public void ProcessDespatchEvent()

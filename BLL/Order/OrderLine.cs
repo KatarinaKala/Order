@@ -14,8 +14,8 @@ namespace BLL.Order
         private double _unitPrice;
 
         private OrderLineIdentifier OrderLineIdentifier;
-        private List<TaxOnLine>? TaxOnLines;
-        public List<ChargeLine>? ChargeLines;
+        private List<TaxOnLine>? TaxOnLines = new List<TaxOnLine>();
+        public List<ChargeLine>? ChargeLines = new List<ChargeLine>();
         private DeliveryReceiver? _deliveryReceiver;
 
         public OrderLine(int numberOrdered, string productName, double unitPrice)
