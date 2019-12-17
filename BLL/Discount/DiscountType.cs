@@ -6,6 +6,7 @@ namespace BLL.Discount
     {
 
         public Decimal Discount { get; set; }
+        
         public Discount GetDiscount(RuleContext context)
         {
             throw new NotImplementedException();

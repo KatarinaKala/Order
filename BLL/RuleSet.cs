@@ -1,7 +1,7 @@
 namespace BLL
 {
     
-    public class RuleContext
+    public class RuleSet
     {
     }
 }
