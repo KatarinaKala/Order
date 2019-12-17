@@ -76,5 +76,35 @@ namespace Tests
             Order.AddPartySummary(Peeter, PartySummaryRoleInOrder.Purchaser);
             Assert.AreEqual(Mari, Order.GetPartySummary(PartySummaryRoleInOrder.Vendor));
         }
+        
+        [Test]
+        public void RemovePartySummaryTest()
+        {
+            Order.AddPartySummary(Mari, PartySummaryRoleInOrder.Vendor);
+            Order.AddPartySummary(Peeter, PartySummaryRoleInOrder.Purchaser);
+            Order.RemovePartySummary(PartySummaryRoleInOrder.Vendor);
+            
+            Dictionary<PartySummaryRoleInOrder, PartySummary> expected = 
+                new Dictionary<PartySummaryRoleInOrder, PartySummary>()
+                    {{PartySummaryRoleInOrder.Purchaser, Peeter}};
+            
+            Assert.AreEqual(expected, Order.PartySummaries);
+        }
+
+        [Test]
+        public void GetEventTest()
+        {
+            Order.Event = OrderEvent.Despatch;
+            OrderEvent expected = OrderEvent.Despatch;
+            Assert.AreEqual(expected, Order.Event);
+        }
+        
+        [Test]
+        public void GetStatusTest()
+        {
+            Order.Status = OrderStatus.Cancelled;
+            OrderStatus expected = OrderStatus.Cancelled;
+            Assert.AreEqual(expected, Order.Status);
+        }
     }
 }

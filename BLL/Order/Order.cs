@@ -13,15 +13,9 @@ namespace BLL.Order
             new Dictionary<PartySummaryRoleInOrder, PartySummary>();
         public List<OrderLine> OrderLines = new List<OrderLine>();
         public List<ChargeLine>? ChargeLines = new List<ChargeLine>();
-        private OrderEvent _event;
-        private OrderStatus _orderStatus;
-
-        public Order()
-        {
-            _event = OrderEvent.Processing;
-            _orderStatus = OrderStatus.Initializing;
-        }
-
+        public OrderEvent Event;
+        public OrderStatus Status;
+        
         public DeliveryReceiver? DeliveryReceiver { get; set; }
 
         //Manager responsibilities of Order
@@ -99,7 +93,7 @@ namespace BLL.Order
         public OrderEvent GetEvent()
         {
             //Return OrderEvent 
-            return _event;
+            return Event;
         }
 
         public void ProcessInvoiceEvent()
@@ -112,7 +106,7 @@ namespace BLL.Order
         {
             //Returns the OrderStatus
 
-            return _orderStatus;
+            return Status;
         }
     }
 }
