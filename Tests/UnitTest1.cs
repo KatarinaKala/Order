@@ -15,6 +15,7 @@ namespace Tests
         internal ChargeLine ChargeLine2;
         internal PartySummary Mari;
         internal PartySummary Peeter;
+        internal DeliveryReceiver DeliveryReceiver;
         
         [SetUp]
         public void Setup()
@@ -22,11 +23,11 @@ namespace Tests
             Order = new Order();
             OrderLine1 = new OrderLine(2, "Veepudel", 15, 1.ToString());
             OrderLine2 = new OrderLine(1, "Vihik", 1, 2.ToString());
-            
             ChargeLine1 = new ChargeLine(15, 3.ToString());
             ChargeLine2 = new ChargeLine(10, 4.ToString());
             Mari = new PartySummary("Mari", "Akadeemia tee", 5123456, "mari@gmail.com");
             Peeter = new PartySummary("Peeter", "Nõmme tee", 5678910, "peeter@gmail.com");
+            DeliveryReceiver = new DeliveryReceiver("Siim", "Tedre", 564737, "siim@gmail.com");
         }
 
         [Test]
@@ -127,6 +128,11 @@ namespace Tests
             Assert.AreEqual(1, OrderLine1.GetNumberOrdered());
         }
         
-        
+        [Test]
+        public void AddDeliveryReceiverTest()
+        {
+            OrderLine1.AddDeliveryReceiver(DeliveryReceiver);
+            Assert.AreEqual(DeliveryReceiver, OrderLine1.GetDeliveryReceiver());
+        }
     }
 }
