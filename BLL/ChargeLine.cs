@@ -5,6 +5,7 @@ namespace BLL
 {
     public class ChargeLine
     {
+        //Lisatasu (nt kiire kohaletoimetamise eest)
         public Money Amount { get; set; }
         public string Description { get; set; }
         public string Comment { get; set; }

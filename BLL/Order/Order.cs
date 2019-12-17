@@ -10,11 +10,9 @@ namespace BLL.Order
         public DateTime DateCreated { get; set; }
         public string SalesChannel { get; set; }
         public string TermsAndConditions { get; set; }
-        public RuleContext DiscountContext { get; set; }
 
         private List<OrderLine> OrderLines { get; set; }
         private List<ChargeLine> ChargeLines { get; set; }
-
         private List<OrderEvent> OrderEvents { get; set; }
 
         public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries =
@@ -95,7 +93,7 @@ namespace BLL.Order
         //Event responsibilities of Order
         public bool AcceptEvent(OrderEvent orderEvent)
         {
-            //Accept an OrderEvent section 9.11
+            //Accept an OrderEvent 
             return orderEvent.Processed;
         }
 
@@ -111,18 +109,6 @@ namespace BLL.Order
             throw new NotImplementedException();
         }
 
-        public void ProcessLifecycleEvent()
-        {
-            //Processes events that drive the Order through its lifecycle section 9.12
-            throw new NotImplementedException();
-        }
-
-        public void ProcessAmendEvent()
-        {
-            //Make an amendment to the Order
-            throw new NotImplementedException();
-        }
-
         public void ProcessInvoiceEvent()
         {
             //Is overriden by the Order subclasses PurchaseOrder and SalesOrder
@@ -131,9 +117,9 @@ namespace BLL.Order
 
         public OrderStatus GetStatus()
         {
-            //Returns the OrderStatus section 9.12
-            
-            throw new NotImplementedException();
+            //Returns the OrderStatus
+
+            return new OrderStatus();
         }
     }
 }

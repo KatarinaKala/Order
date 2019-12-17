@@ -8,6 +8,7 @@ namespace BLL.Order
 {
     public class OrderManager
     {
+        //Erinevad allahindlused, käibemaksureeglid tellimusel
         private List<Order> Orders { get; set; }
         
 

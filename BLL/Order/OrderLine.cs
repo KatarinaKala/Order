@@ -6,6 +6,7 @@ namespace BLL.Order
     //Section 9.5
     public class OrderLine
     {
+        //Peab viitama kaubale, mida tellitakse
         public ProductIdentifier ProductType { get; set; }
         public SerialNumber SerialNumber { get; set; }
         public string Description { get; set; }
