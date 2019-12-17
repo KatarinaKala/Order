@@ -18,11 +18,12 @@ namespace BLL.Order
         public List<ChargeLine>? ChargeLines = new List<ChargeLine>();
         private DeliveryReceiver? _deliveryReceiver;
 
-        public OrderLine(int numberOrdered, string productName, double unitPrice)
+        public OrderLine(int numberOrdered, string productName, double unitPrice, string identifier)
         {
             _numberOrdered = numberOrdered;
             _productName = productName;
             _unitPrice = unitPrice;
+            OrderLineIdentifier = new OrderLineIdentifier(identifier);
         }
 
         //Manage identification
@@ -41,13 +42,13 @@ namespace BLL.Order
         public void IncrementNumberOrdered(int number)
         {
             //Increments (suurenda) the number of ProductInstances recorded by the OrderLine
-            _numberOrdered += 1;
+            _numberOrdered += number;
         }
 
         public void DecrementNumberOrdered(int number)
         {
             //Decrements the number of ProductInstances recorded by the OrderLine
-            _numberOrdered -= 1;
+            _numberOrdered -= number;
         }
 
         //Manage Parties

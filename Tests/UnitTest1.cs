@@ -20,11 +20,11 @@ namespace Tests
         public void Setup()
         {
             Order = new Order();
-            OrderLine1 = new OrderLine(2, "Veepudel", 15);
-            OrderLine2 = new OrderLine(1, "Vihik", 1);
+            OrderLine1 = new OrderLine(2, "Veepudel", 15, 1.ToString());
+            OrderLine2 = new OrderLine(1, "Vihik", 1, 2.ToString());
             
-            ChargeLine1 = new ChargeLine(15);
-            ChargeLine2 = new ChargeLine(10);
+            ChargeLine1 = new ChargeLine(15, 3.ToString());
+            ChargeLine2 = new ChargeLine(10, 4.ToString());
             Mari = new PartySummary("Mari", "Akadeemia tee", 5123456, "mari@gmail.com");
             Peeter = new PartySummary("Peeter", "Nõmme tee", 5678910, "peeter@gmail.com");
         }
@@ -106,5 +106,27 @@ namespace Tests
             OrderStatus expected = OrderStatus.Cancelled;
             Assert.AreEqual(expected, Order.Status);
         }
+        
+        [Test]
+        public void GetNumberOrderedTest()
+        {
+            Assert.AreEqual(2, OrderLine1.GetNumberOrdered());
+        }
+        
+        [Test]
+        public void IncrementNumberOrderedTest()
+        {
+            OrderLine1.IncrementNumberOrdered(2);
+            Assert.AreEqual(4, OrderLine1.GetNumberOrdered());
+        }
+        
+        [Test]
+        public void DecrementNumberOrderedTest()
+        {
+            OrderLine1.DecrementNumberOrdered(1);
+            Assert.AreEqual(1, OrderLine1.GetNumberOrdered());
+        }
+        
+        
     }
 }

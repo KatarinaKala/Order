@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using BLL.Party;
 
 namespace BLL.Order
@@ -40,14 +41,8 @@ namespace BLL.Order
         public void RemoveOrderLine(OrderLineIdentifier id)
         {
             //Remove the specified OrderLine from the Order
-            foreach (var orderLine in OrderLines)
-            {
-                if (orderLine.GetOrderLineIdentifier() == id)
-                {
-                    OrderLines.Remove(orderLine);
-                    return;
-                }
-            }
+            //ChargeLines = ChargeLines.Where(line => line.OrderLineIdentifier != id).ToList();
+            OrderLines = OrderLines.Where(line => line.GetOrderLineIdentifier() != id).ToList();
         }
 
         public void AddChargeLine(ChargeLine line)
@@ -63,13 +58,7 @@ namespace BLL.Order
         public void RemoveChargeLine(OrderLineIdentifier id)
         {
             //Remove the specified ChargeLine from the Order
-            foreach (var chargeLine in ChargeLines)
-            {
-                if (chargeLine.OrderLineIdentifier == id)
-                {
-                    ChargeLines.Remove(chargeLine);
-                }
-            }
+            ChargeLines = ChargeLines.Where(line => line.OrderLineIdentifier != id).ToList();
         }
 
         public void AddPartySummary(PartySummary reference, PartySummaryRoleInOrder role)

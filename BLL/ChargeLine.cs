@@ -13,9 +13,10 @@ namespace BLL
         private List<TaxOnLine> _taxOnLines = new List<TaxOnLine>();
         public OrderLineIdentifier OrderLineIdentifier { get;}
 
-        public ChargeLine(int amount)
+        public ChargeLine(int amount, string identifier)
         {
             _amount = amount;
+            OrderLineIdentifier = new OrderLineIdentifier(identifier);
         }
 
         public void AddTax(TaxOnLine tax)
