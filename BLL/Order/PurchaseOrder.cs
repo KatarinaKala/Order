@@ -1,4 +1,5 @@
 using System;
+using BLL.Party;
 
 namespace BLL.Order
 {
@@ -8,6 +9,10 @@ namespace BLL.Order
         
         //Records the date when order was sent to the seller
         public DateTime DateSent { get; set; }
+        
+        public PurchaseOrder(PartySummaryRoleInOrder role) : base(role)
+        {
+        }
         
         //Track ProductInstances
         public void ProcessReceiptEvent()

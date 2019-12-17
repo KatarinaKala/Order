@@ -60,18 +60,7 @@ namespace BLL.Order
 
         public SalesTaxPolicy GetSalesTaxPolicy(string taxationType)
         {
-            //return _orders.Single(order => order.GetIdentifier() == identifier);
-            
-            throw new NotImplementedException();
-            /*foreach (var policy in _salesTaxPolicies)
-            {
-                if (policy._taxationType == taxationType)
-                {
-                    return policy;
-                }
-            }*/
-
-            //return _salesTaxPolicies.Where(policy => policy._taxationType == taxationType);
+            return _salesTaxPolicies.Single(policy => policy._taxationType == taxationType);
         }
 
         public void RemoveSalesTaxPolicy(SalesTaxPolicy policy)

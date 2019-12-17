@@ -16,7 +16,7 @@ namespace BLL.Order
         private OrderLineIdentifier OrderLineIdentifier;
         private List<TaxOnLine>? TaxOnLines;
         public List<ChargeLine>? ChargeLines;
-        private DeliveryReceiver? DeliveryReceiver;
+        private DeliveryReceiver? _deliveryReceiver;
 
         public OrderLine(int numberOrdered, string productName, double unitPrice)
         {
@@ -54,19 +54,19 @@ namespace BLL.Order
         public void AddDeliveryReceiver(DeliveryReceiver receiver)
         {
             //Adds a DeliveryReceiver to the OrderLine
-            DeliveryReceiver = receiver;
+            _deliveryReceiver = receiver;
         }
 
         public DeliveryReceiver GetDeliveryReceiver()
         {
             //Return the DeliveryReceiver for this OrderLine
-            return DeliveryReceiver;
+            return _deliveryReceiver;
         }
 
         public void RemoveDeliveryReceiver()
         {
             //Remove the DeliveryReceiver from the OrderLine
-            DeliveryReceiver = null;
+            _deliveryReceiver = null;
         }
 
         //Manage tax

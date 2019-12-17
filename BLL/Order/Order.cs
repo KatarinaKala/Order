@@ -7,14 +7,23 @@ namespace BLL.Order
     public class Order
     {
         private string OrderId = new Random().Next(10000, 100000).ToString();
-        public DateTime DateCreated { get; set; } //Mõtle, kas vaja. Panna konstruktorisse?
+        public DateTime DateCreated { get; set; }
 
         public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries =
             new Dictionary<PartySummaryRoleInOrder, PartySummary>();
         public List<OrderLine> OrderLines;
-        private List<ChargeLine>? ChargeLines;
-        private List<OrderEvent> OrderEvents;
-        public OrderStatus OrderStatus;
+        public List<ChargeLine>? ChargeLines;
+        private OrderEvent _event;
+        private OrderStatus _orderStatus;
+        private PartySummaryRoleInOrder _role;
+
+        public Order(PartySummaryRoleInOrder role)
+        {
+            _event = OrderEvent.Processing;
+            _role = role;
+            _orderStatus = OrderStatus.Initializing;
+        }
+
         public DeliveryReceiver? DeliveryReceiver { get; set; }
 
         //Manager responsibilities of Order
@@ -89,10 +98,10 @@ namespace BLL.Order
             PartySummaries.Remove(role);
         }
 
-        public List<OrderEvent> GetEvents()
+        public OrderEvent GetEvent()
         {
             //Return all the OrderEvents that have been applied to this Order 
-            return OrderEvents;
+            return _event;
         }
 
         public void ProcessInvoiceEvent()
@@ -105,7 +114,7 @@ namespace BLL.Order
         {
             //Returns the OrderStatus
 
-            return OrderStatus;
+            return _orderStatus;
         }
     }
 }
