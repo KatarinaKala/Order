@@ -90,13 +90,6 @@ namespace BLL.Order
             PartySummaries.Remove(role);
         }
 
-        //Event responsibilities of Order
-        public bool AcceptEvent(OrderEvent orderEvent)
-        {
-            //Accept an OrderEvent 
-            return orderEvent.Processed;
-        }
-
         public List<OrderEvent> GetEvents()
         {
             //Return all the OrderEvents that have been applied to this Order 

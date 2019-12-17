@@ -3,13 +3,14 @@ using BLL.Party;
 
 namespace BLL.Order
 {
-    public class OrderEvent
+    public enum OrderEvent
     {
-        //Võid enumiga kirjutada erinevad sündmused)
-        public OrderIdentifier OrderIdentifier { get; set; }
-        public PartySignature Authorization { get; set; }
-        public DateTime DateAuthorized { get; set; }
-        public bool Processed { get; set; }
+        Despatch,
+        Receipt,
+        Payment,
+        Discount,
+        Lifecycle,
+        Amend
         
     }
 }
