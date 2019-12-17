@@ -6,17 +6,17 @@ namespace BLL.Order
 {
     public class Order
     {
-        public string Id { get; set; } = new Random().Next(10000, 100000).ToString();
-        public DateTime DateCreated { get; set; }
-        public string SalesChannel { get; set; }
-        public string TermsAndConditions { get; set; }
-
-        private List<OrderLine> OrderLines { get; set; }
-        private List<ChargeLine> ChargeLines { get; set; }
-        private List<OrderEvent> OrderEvents { get; set; }
+        private string Id = new Random().Next(10000, 100000).ToString();
+        public DateTime DateCreated { get; set; } //Mõtle, kas vaja. Panna konstruktorisse?
+        public string TermsAndConditions { get; set; } //Mõtle, kas vaja
 
         public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries =
             new Dictionary<PartySummaryRoleInOrder, PartySummary>();
+        public List<OrderLine> OrderLines;
+        private List<ChargeLine>? ChargeLines;
+        private List<OrderEvent> OrderEvents;
+        public OrderStatus OrderStatus;
+
 
         //Manager responsibilities of Order
         public OrderIdentifier GetIdentifier()
@@ -113,7 +113,7 @@ namespace BLL.Order
         {
             //Returns the OrderStatus
 
-            return new OrderStatus();
+            return OrderStatus;
         }
     }
 }

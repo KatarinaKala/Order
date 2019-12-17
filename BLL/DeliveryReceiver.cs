@@ -1,7 +1,12 @@
+using BLL.Party;
+
 namespace BLL
 {
-    public class DeliveryReceiver
+    public class DeliveryReceiver : PartySummary
     {
-        public string DeliveryInstructions { get; set; }
+
+        public DeliveryReceiver(string name, string address, int telephoneNumber, string emailAddress) : base(name, address, telephoneNumber, emailAddress)
+        {
+        }
     }
 }

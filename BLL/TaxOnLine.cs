@@ -8,7 +8,7 @@ namespace BLL
         public string TaxationType { get; set; }
         public string Comment { get; set; }
 
-        public Money CalculateTax(Money amount)
+        public int CalculateTax(int amount)
         {
             throw new NotImplementedException();
         }

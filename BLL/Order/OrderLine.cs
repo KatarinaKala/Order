@@ -6,16 +6,20 @@ namespace BLL.Order
     //Section 9.5
     public class OrderLine
     {
+
         //Peab viitama kaubale, mida tellitakse
-        public ProductIdentifier ProductType { get; set; }
-        public SerialNumber SerialNumber { get; set; }
-        public string Description { get; set; }
-        public string Comment { get; set; }
-        public int NumberOrdered { get; set; }
-        public Money UnitPrice { get; set; }
-        public DateTime ExpectedDeliveryDate { get; set; }
+        public int numberOrdered;
+        public string ProductName { get; set; }
+        public string? Description { get; set; }
+        public string? Comment { get; set; }
+       
         
+
+        public int UnitPrice { get; set; }
+        public DateTime ExpectedDeliveryDate { get; set; }
+
         public OrderLineIdentifier OrderLineIdentifier { get; set; }
+        public ChargeLine? ChargeLine { get; set; }
 
         //Manage identification
         public OrderLineIdentifier GetOrderLineIdentifier()
@@ -26,7 +30,7 @@ namespace BLL.Order
         //Manage number ordered
         public void IncrementNumberOrdered(int number)
         {
-            //Increments the number of ProductInstances recorded by the OrderLine
+            //Increments (suurenda) the number of ProductInstances recorded by the OrderLine
             throw new NotImplementedException();
         }
 
