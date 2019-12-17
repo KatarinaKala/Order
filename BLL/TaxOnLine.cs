@@ -4,13 +4,14 @@ namespace BLL
 {
     public class TaxOnLine
     {
-        public double TaxationRate { get; set; } //Real andmetüüp- siin üllis protsent
-        public string TaxationType { get; set; }
-        public string Comment { get; set; }
-
-        public int CalculateTax(int amount)
+        private double _taxationRate;
+        private string _taxationType;
+        public string? Comment { get; set; }
+        
+        public TaxOnLine(double taxationRate, string taxationType)
         {
-            throw new NotImplementedException();
+            _taxationRate = taxationRate;
+            _taxationType = taxationType;
         }
     }
 }

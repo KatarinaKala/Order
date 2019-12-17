@@ -6,26 +6,30 @@ namespace BLL
     public class ChargeLine
     {
         //Lisatasu (nt kiire kohaletoimetamise eest)
-        public int Amount { get; set; }
-        public string Description { get; set; }
-        public string Comment { get; set; }
-        public List<TaxOnLine> TaxOnLines { get; set; }
-        
+        private int _amount;
+        private string? Description { get; set; }
+        private string? Comment { get; set; }
+        private List<TaxOnLine> _taxOnLines;
         public OrderLineIdentifier OrderLineIdentifier { get; set; }
+
+        public ChargeLine(int amount)
+        {
+            _amount = amount;
+        }
 
         public void AddTax(TaxOnLine tax)
         {
-            TaxOnLines.Add(tax);
+            _taxOnLines.Add(tax);
         }
 
         public List<TaxOnLine> GetTaxes()
         {
-            return TaxOnLines;
+            return _taxOnLines;
         }
 
         public void RemoveTax(TaxOnLine tax)
         {
-            TaxOnLines.Remove(tax);
+            _taxOnLines.Remove(tax);
         }
     }
 }
