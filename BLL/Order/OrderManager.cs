@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using BLL.Discount;
 using BLL.Party;
 
 namespace BLL.Order
@@ -9,58 +8,54 @@ namespace BLL.Order
     public class OrderManager
     {
         //Erinevad allahindlused, käibemaksureeglid tellimusel
-        private List<Order> Orders { get; set; }
-        
+        private List<Order>? _orders;
+        private List<SalesTaxPolicy> _salesTaxPolicies;
+        private List<Discount>? _discounts;
 
         public void AddOrder(Order order)
         {
-            Orders.Add(order);
+            _orders.Add(order);
         }
 
         public Order FindOrder(OrderIdentifier identifier)
         {
-            return Orders.Single(order => order.GetIdentifier() == identifier);
-        }
-
-        public List<Order> FindOrder(PartySummaryRoleInOrder party, PartySummaryRoleInOrder role)
-        {
-            // return Orders.Where(order => order.PartySummaries[party] == role);
-            throw new NotImplementedException();
-        }
-
-        public List<Order> FindOrder(DateTime start, DateTime end)
-        {
-            return Orders.FindAll(order => order.DateCreated == start && order.DateCreated == end);
+          return _orders.Single(order => order.GetIdentifier() == identifier);
         }
 
         public void RemoveOrder(OrderIdentifier id)
         {
-            Orders = (List<Order>) Orders.Where(order => order.GetIdentifier() != id);
+            foreach (var order in _orders)
+            {
+                if (order.GetIdentifier() == id)
+                {
+                    _orders.Remove(order);
+                }
+            }
         }
 
-        public void AddDiscount(DiscountType discountType)
+        public void AddDiscount(Discount discount)
         {
-            throw new NotImplementedException();
+            _discounts.Add(discount);
         }
 
-        public List<DiscountType> GetDiscountTypes()
+        public List<Discount> GetDiscountTypes()
         {
-            throw new NotImplementedException();
+            return _discounts;
         }
 
-        public void RemoveDiscountType(DiscountType discountType)
+        public void RemoveDiscountType(Discount discount)
         {
-            throw new NotImplementedException();
+            _discounts.Remove(discount);
         }
 
-        public List<Discount.Discount> GetDiscount(Order order)
+        public List<Discount> GetDiscount(Order order)
         {
             throw new NotImplementedException();
         }
 
         public void AddSalesTaxPolicy(SalesTaxPolicy policy)
         {
-            throw new NotImplementedException();
+            _salesTaxPolicies.Add(policy);
         }
 
         public SalesTaxPolicy GetSalesTaxPolicy(string taxationType)

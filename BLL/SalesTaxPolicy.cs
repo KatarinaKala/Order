@@ -2,7 +2,13 @@ namespace BLL
 {
     public class SalesTaxPolicy
     {
-        public string TaxationType { get; set; }
-        public double TaxationRate { get; set; } //Real andmetüüp- siin üllis protsendid
+        private string _taxationType;
+        private double _taxationRate;
+        
+        public SalesTaxPolicy(string taxationType, double taxationRate)
+        {
+            _taxationType = taxationType;
+            _taxationRate = taxationRate;
+        }
     }
 }

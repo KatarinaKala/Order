@@ -11,7 +11,7 @@ namespace BLL.Order
         private string _productName;
         public string? Description { get; set; }
         public string? Comment { get; set; }
-        private int _unitPrice;
+        private double _unitPrice;
         public DateTime ExpectedDeliveryDate { get; set; }
 
         private OrderLineIdentifier OrderLineIdentifier;
@@ -19,7 +19,7 @@ namespace BLL.Order
         public List<ChargeLine>? ChargeLines;
         private DeliveryReceiver? DeliveryReceiver;
 
-        public OrderLine(int numberOrdered, string productName, int unitPrice)
+        public OrderLine(int numberOrdered, string productName, double unitPrice)
         {
             _numberOrdered = numberOrdered;
             _productName = productName;
