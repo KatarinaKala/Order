@@ -9,7 +9,7 @@ namespace ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            var orderLine = new OrderLine(2, "Veepudel", 15);
+            var orderLine = new OrderLine(2, "Veepudel", 15, 2.ToString());
             var order = new Order();
             order.AddOrderLine(orderLine);
             order.GetEvent();
