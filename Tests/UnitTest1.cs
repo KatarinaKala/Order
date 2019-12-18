@@ -16,6 +16,8 @@ namespace Tests
         internal PartySummary Mari;
         internal PartySummary Peeter;
         internal DeliveryReceiver DeliveryReceiver;
+        internal TaxOnLine tax1;
+        internal TaxOnLine tax2;
         
         [SetUp]
         public void Setup()
@@ -28,6 +30,8 @@ namespace Tests
             Mari = new PartySummary("Mari", "Akadeemia tee", 5123456, "mari@gmail.com");
             Peeter = new PartySummary("Peeter", "Nõmme tee", 5678910, "peeter@gmail.com");
             DeliveryReceiver = new DeliveryReceiver("Siim", "Tedre", 564737, "siim@gmail.com");
+            tax1 = new TaxOnLine(0.2, "Käibemaks");
+            tax2 = new TaxOnLine(0.1, "Maks");
         }
 
         [Test]
@@ -141,6 +145,26 @@ namespace Tests
             OrderLine1.AddDeliveryReceiver(DeliveryReceiver);
             OrderLine1.RemoveDeliveryReceiver();
             Assert.AreEqual(null, OrderLine1.GetDeliveryReceiver());
+        }
+        
+        [Test]
+        public void AddTaxLinesTest()
+        {
+            OrderLine1.AddTax(tax1);
+            OrderLine1.AddTax(tax2);
+            List<TaxOnLine> expected = new List<TaxOnLine>(){tax1, tax2};
+            Assert.AreEqual(expected, OrderLine1.GetTaxes());
+        }
+        
+        [Test]
+        public void RemoveTaxLinesTest()
+        {
+            OrderLine1.AddTax(tax1);
+            OrderLine1.AddTax(tax2);
+            OrderLine1.RemoveTax(tax1);
+            
+            List<TaxOnLine> expected = new List<TaxOnLine>(){tax2};
+            Assert.AreEqual(expected, OrderLine1.GetTaxes());
         }
     }
 }
