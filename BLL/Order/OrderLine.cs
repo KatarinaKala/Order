@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BLL.Order
 {
@@ -105,13 +106,7 @@ namespace BLL.Order
         public void RemoveChargeLine(OrderLineIdentifier id)
         {
             //Remove a ChargeLine from the OrderLine
-            foreach (var chargeLine in ChargeLines)
-            {
-                if (chargeLine.OrderLineIdentifier == id)
-                {
-                    ChargeLines.Remove(chargeLine);
-                }
-            }
+            ChargeLines = ChargeLines.Where(line => line.OrderLineIdentifier != id).ToList();
         }
     }
 }

@@ -134,5 +134,13 @@ namespace Tests
             OrderLine1.AddDeliveryReceiver(DeliveryReceiver);
             Assert.AreEqual(DeliveryReceiver, OrderLine1.GetDeliveryReceiver());
         }
+        
+        [Test]
+        public void RemoveDeliveryReceiverTest()
+        {
+            OrderLine1.AddDeliveryReceiver(DeliveryReceiver);
+            OrderLine1.RemoveDeliveryReceiver();
+            Assert.AreEqual(null, OrderLine1.GetDeliveryReceiver());
+        }
     }
 }
