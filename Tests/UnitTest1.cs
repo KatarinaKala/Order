@@ -55,7 +55,7 @@ namespace Tests
         }
         
         [Test]
-        public void AddChargeLinesTest()
+        public void AddChargeLinesToOrderTest()
         {
             Order.AddChargeLine(ChargeLine1);
             Order.AddChargeLine(ChargeLine2);
@@ -64,7 +64,7 @@ namespace Tests
         }
         
         [Test]
-        public void RemoveChargeLinesTest()
+        public void RemoveChargeLinesFromOrderTest()
         {
             Order.AddChargeLine(ChargeLine1);
             Order.AddChargeLine(ChargeLine2);
@@ -165,6 +165,26 @@ namespace Tests
             
             List<TaxOnLine> expected = new List<TaxOnLine>(){tax2};
             Assert.AreEqual(expected, OrderLine1.GetTaxes());
+        }
+        
+        [Test]
+        public void AddChargeLinesToOrderLineTest()
+        {
+            OrderLine1.AddChargeLine(ChargeLine1);
+            OrderLine1.AddChargeLine(ChargeLine2);
+            List<ChargeLine> expected = new List<ChargeLine>(){ChargeLine1, ChargeLine2};
+            Assert.AreEqual(expected, OrderLine1.GetChargeLines());
+        }
+        
+        [Test]
+        public void RemoveChargeLinesFromOrderLineTest()
+        {
+            OrderLine1.AddChargeLine(ChargeLine1);
+            OrderLine1.AddChargeLine(ChargeLine2);
+            OrderLine1.RemoveChargeLine(ChargeLine2.OrderLineIdentifier);
+            
+            List<ChargeLine> expected = new List<ChargeLine>(){ChargeLine1};
+            Assert.AreEqual(expected, OrderLine1.GetChargeLines());
         }
     }
 }
