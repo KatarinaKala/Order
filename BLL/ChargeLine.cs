@@ -7,7 +7,7 @@ namespace BLL
     public class ChargeLine
     {
         //Lisatasu (nt kiire kohaletoimetamise eest)
-        private int _amount;
+        public int Amount;
         private string? Description { get; set; }
         private string? Comment { get; set; }
         private List<TaxOnLine> _taxOnLines = new List<TaxOnLine>();
@@ -15,7 +15,7 @@ namespace BLL
 
         public ChargeLine(int amount, string identifier)
         {
-            _amount = amount;
+            Amount = amount;
             OrderLineIdentifier = new OrderLineIdentifier(identifier);
         }
 

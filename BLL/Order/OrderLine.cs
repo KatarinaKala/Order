@@ -108,5 +108,29 @@ namespace BLL.Order
             //Remove a ChargeLine from the OrderLine
             ChargeLines = ChargeLines.Where(line => line.OrderLineIdentifier != id).ToList();
         }
+
+        public double TotalSum()
+        {
+            double totalPrice = _unitPrice * _numberOrdered;
+        
+            if (TaxOnLines != null)
+            {
+                foreach (var tax in TaxOnLines)
+                {
+                    double amount = totalPrice * tax.TaxationRate;
+                    totalPrice += amount;
+                }
+            }
+
+            if (ChargeLines != null)
+            {
+                foreach (var charge in ChargeLines)
+                {
+                    totalPrice += charge.Amount;
+                }
+            }
+
+            return totalPrice;
+        }
     }
 }

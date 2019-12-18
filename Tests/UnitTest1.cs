@@ -22,7 +22,7 @@ namespace Tests
         [SetUp]
         public void Setup()
         {
-            Order = new Order();
+            Order = new Order(10.ToString());
             OrderLine1 = new OrderLine(2, "Veepudel", 15, 1.ToString());
             OrderLine2 = new OrderLine(1, "Vihik", 1, 2.ToString());
             ChargeLine1 = new ChargeLine(15, 3.ToString());
@@ -34,6 +34,13 @@ namespace Tests
             tax2 = new TaxOnLine(0.1, "Maks");
         }
 
+        [Test]
+        public void GetOrderLineIdentifierTest()
+        {
+            OrderLineIdentifier expected = new OrderLineIdentifier("1");
+            Assert.AreEqual(expected.GetIdentifier(), OrderLine1.GetOrderLineIdentifier().GetIdentifier());
+        }
+        
         [Test]
         public void AddOrderLinesTest()
         {
@@ -185,6 +192,32 @@ namespace Tests
             
             List<ChargeLine> expected = new List<ChargeLine>(){ChargeLine1};
             Assert.AreEqual(expected, OrderLine1.GetChargeLines());
+        }
+        
+        [Test]
+        public void OrderLineTotalSumTest()
+        {
+            //30 kokku, 20% tax ja 10 +15 charges
+            OrderLine1.AddChargeLine(ChargeLine1);
+            OrderLine1.AddChargeLine(ChargeLine2);
+            OrderLine1.AddTax(tax1);
+            
+            Assert.AreEqual(61, OrderLine1.TotalSum());
+        }
+        
+        [Test]
+        public void OrderTotalSumTest()
+        {
+            //30 kokku, 20% tax ja 10 +15 charges = 61
+            OrderLine1.AddChargeLine(ChargeLine1);
+            OrderLine1.AddChargeLine(ChargeLine2);
+            OrderLine1.AddTax(tax1);
+            
+            Order.AddOrderLine(OrderLine1);
+            Order.AddOrderLine(OrderLine2);
+            Order.TotalSum();
+            
+            Assert.AreEqual(62, Order.TotalSum());
         }
     }
 }

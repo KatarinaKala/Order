@@ -8,9 +8,8 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
             var orderLine = new OrderLine(2, "Veepudel", 15, 2.ToString());
-            var order = new Order();
+            var order = new Order(1.ToString());
             order.AddOrderLine(orderLine);
             order.GetEvent();
         }

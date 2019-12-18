@@ -34,5 +34,9 @@ namespace BLL.Order
         {
             //Records that a refund has been made against this SalesOrder
         }
+
+        public SalesOrder(string identifier) : base(identifier)
+        {
+        }
     }
 }

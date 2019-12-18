@@ -19,7 +19,6 @@ namespace BLL.Order
         //Track Payments
         public void ProcessInvoiceEvent()
         {
-            //Kas see tuleb overrideda?
             //Records that an invoice has been received for this PurchaseOrder
         }
 
@@ -31,6 +30,10 @@ namespace BLL.Order
         public void ProcessAcceptRefundEvent()
         {
             //Records that a refund has been received against this PurchaseOrder 
+        }
+
+        public PurchaseOrder(string identifier) : base(identifier)
+        {
         }
     }
 }

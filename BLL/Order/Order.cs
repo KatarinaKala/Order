@@ -7,7 +7,7 @@ namespace BLL.Order
 {
     public class Order
     {
-        private string OrderId = new Guid().ToString();
+        private OrderIdentifier OrderId;
         public DateTime DateCreated { get; set; }
 
         public Dictionary<PartySummaryRoleInOrder, PartySummary> PartySummaries = 
@@ -16,14 +16,19 @@ namespace BLL.Order
         public List<ChargeLine>? ChargeLines = new List<ChargeLine>();
         public OrderEvent Event;
         public OrderStatus Status;
-        
+
+        public Order(string identifier)
+        {
+            OrderId = new OrderIdentifier(identifier);
+        }
+
         public DeliveryReceiver? DeliveryReceiver { get; set; }
 
         //Manager responsibilities of Order
         public OrderIdentifier GetIdentifier()
         {
             //Return OrderIdentifier
-            return new OrderIdentifier(OrderId);
+            return OrderId;
         }
 
         public void AddOrderLine(OrderLine orderLine)
@@ -96,6 +101,26 @@ namespace BLL.Order
             //Returns the OrderStatus
 
             return Status;
+        }
+
+        public double TotalSum()
+        {
+            double totalsum = 0;
+            
+            foreach (var line in OrderLines)
+            {
+                totalsum += line.TotalSum();
+            }
+            
+            if (ChargeLines != null)
+            {
+                foreach (var charge in ChargeLines)
+                {
+                    totalsum += charge.Amount;
+                }
+            }
+
+            return totalsum;
         }
     }
 }

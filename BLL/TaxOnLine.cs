@@ -4,13 +4,13 @@ namespace BLL
 {
     public class TaxOnLine
     {
-        private double _taxationRate;
+        public double TaxationRate;
         private string _taxationType;
         public string? Comment { get; set; }
         
         public TaxOnLine(double taxationRate, string taxationType)
         {
-            _taxationRate = taxationRate;
+            TaxationRate = taxationRate;
             _taxationType = taxationType;
         }
     }

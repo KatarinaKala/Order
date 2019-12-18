@@ -15,5 +15,10 @@ namespace BLL
         {
             return _identifier;
         }
+
+        public override string ToString()
+        {
+            return _identifier;
+        }
     }
 }
